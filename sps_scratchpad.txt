@@ -1,0 +1,38 @@
+Simple Packaging System
+
+-All source tarballs will be XZ'd if possible.
+-Upgrades will be based on time stamps, not version, epoch, or release. There is no epoch or release in SPS.
+--How would we handle making sure a package is built against a certain version?
+-What about when files aren't listed?
+-Use Debian -dev, not RPM -devel. We don't want no steenkin' devil. Seriously, though, it's shorter, and shorter is better.
+-Should we have a Priority tag?
+-Automatic dependency checking
+--Going to need a central database on the installed, local system which keeps a record of what's installed,
+  what files each package provides, and the timestamp of the package.
+--Use ldd
+-How about package lists are generated based on changes from previous package lists?
+--Let's think about this later.
+
+XML
+-Use tags, not "Group"
+--New line delineated
+-No changelog-- that will be covered in the GIT/SVN logs
+-Need list of shorthand dirs
+
+Source Storage
+-(SVN|GIT)/packages/deadbeef:
+--deadbeef.sps
+--patches/
+-(Ibiblio/mirrors)/sources/current/deadbeef-0.4.4.tar.xz
+-(Ibiblio/mirrors)/sources/archive/deadbeef-0.4.3.tar.xz
+-(Ibiblio/mirrors)/sources/archive/deadbeef-0.4.2.tar.xz
+--Packagers should have local mirror set up. They should mirror at least the current directory.
+
+Binary Tarballs
+-metatdata (XML format)
+--timestamp
+--version
+--
+-deadbeef.tar (inside is /usr/bin, etc. Contents are copied to the file system.)
+
+Package Lists
